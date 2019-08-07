@@ -1,0 +1,8 @@
+storybook-static/
+scripts/
+public/
+dist/
+config/
+.coverage/
+test/
+build/
