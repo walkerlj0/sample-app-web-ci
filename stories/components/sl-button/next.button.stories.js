@@ -2,7 +2,7 @@ import React from 'react';
 import { style } from '../../utils/styling';
 import Button, { BUTTON_TYPES } from '../../../src/components/Button';
 
-export default class ActionButton extends React.Component {
+export default class NextButton extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,9 +23,9 @@ export default class ActionButton extends React.Component {
     return (
       <div>
         <Button
-          buttonType={ BUTTON_TYPES.ACTION }
+          buttonType={ BUTTON_TYPES.NEXT }
           fallBackClasses="btn_action"
-          label="Button text"
+          label="Next Button"
           onClick={ this.handleOnClick }
         />
         <div style={ style.stateContainer }>

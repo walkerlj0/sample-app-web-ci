@@ -1,17 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should render correctly with full options 1`] = `
+exports[`Button Action Button should render correctly with full options 1`] = `
 <WithStyles(Button)
   classes={
     Object {
-      "label": "BaseButton-labelAction-2",
-      "root": "BaseButton-rootAction-1 fallback-classes",
+      "label": "BaseButton-label-7 BaseButton-labelAction-8",
+      "root": "BaseButton-root-1 BaseButton-rootAction-2 fallback-classes",
     }
   }
   data-test="data-test-string"
   disableFocusRipple={true}
   disableRipple={true}
-  fullWidth={true}
   id="test-id"
   onClick={[MockFunction]}
 >
@@ -19,17 +18,89 @@ exports[`Button should render correctly with full options 1`] = `
 </WithStyles(Button)>
 `;
 
-exports[`Button should render correctly with the required options 1`] = `
+exports[`Button Action Button should render correctly with the required options 1`] = `
 <WithStyles(Button)
   classes={
     Object {
-      "label": "BaseButton-labelAction-2",
-      "root": "BaseButton-rootAction-1 ",
+      "label": "BaseButton-label-7 BaseButton-labelAction-8",
+      "root": "BaseButton-root-1 BaseButton-rootAction-2 ",
     }
   }
   disableFocusRipple={true}
   disableRipple={true}
-  fullWidth={true}
+  id="test-id"
+  onClick={[MockFunction]}
+>
+  Test Label
+</WithStyles(Button)>
+`;
+
+exports[`Button Add Button should render correctly with the required options 1`] = `
+<WithStyles(Button)
+  classes={
+    Object {
+      "label": "BaseButton-label-7 BaseButton-labelAdd-9",
+      "root": "BaseButton-root-1 BaseButton-rootAdd-3 ",
+    }
+  }
+  disableFocusRipple={true}
+  disableRipple={true}
+  id="test-id"
+  onClick={[MockFunction]}
+>
+  Test Label
+</WithStyles(Button)>
+`;
+
+exports[`Button Back Button should render correctly with the required options 1`] = `
+<WithStyles(Button)
+  classes={
+    Object {
+      "label": "BaseButton-label-7 BaseButton-labelBack-10",
+      "root": "BaseButton-root-1 BaseButton-rootBack-4 ",
+    }
+  }
+  disableFocusRipple={true}
+  disableRipple={true}
+  id="test-id"
+  onClick={[MockFunction]}
+>
+  <img
+    className="BaseButton-backImage-13"
+    src="test-file-stub"
+    srcSet="test-file-stub"
+  />
+  Test Label
+</WithStyles(Button)>
+`;
+
+exports[`Button Next Button should render correctly with the required options 1`] = `
+<WithStyles(Button)
+  classes={
+    Object {
+      "label": "BaseButton-label-7 BaseButton-labelNext-11",
+      "root": "BaseButton-root-1 BaseButton-rootNext-5 ",
+    }
+  }
+  disableFocusRipple={true}
+  disableRipple={true}
+  id="test-id"
+  onClick={[MockFunction]}
+>
+  Test Label
+</WithStyles(Button)>
+`;
+
+exports[`Button Remove Button should render correctly with the required options 1`] = `
+<WithStyles(Button)
+  classes={
+    Object {
+      "label": "BaseButton-label-7 BaseButton-labelRemove-12",
+      "root": "BaseButton-root-1 BaseButton-rootRemove-6 ",
+    }
+  }
+  disableFocusRipple={true}
+  disableRipple={true}
   id="test-id"
   onClick={[MockFunction]}
 >
