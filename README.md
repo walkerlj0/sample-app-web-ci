@@ -29,7 +29,7 @@ we recommend installing [NVM](https://github.com/creationix/nvm) to assist manag
 
     This will build the application, start Chrome and load the website on [http://localhost:3000/](http://localhost:3000/)
 
-1. Click around - this is the app!
+1. Click around - this is the app
 1. Install [OpenJDK 8](https://adoptopenjdk.net/) for running the end-to-end tests
 1. Install [Google Chrome](https://www.google.com/chrome/) for running the end-to-end tests
 
