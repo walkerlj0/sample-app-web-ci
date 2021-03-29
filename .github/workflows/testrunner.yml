@@ -9,6 +9,7 @@ on:
 env:
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCECTL_VERSION: 0.34.1
 
 jobs:
   cypress-job:
