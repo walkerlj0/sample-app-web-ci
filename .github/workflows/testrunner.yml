@@ -24,7 +24,7 @@ jobs:
           npm install
       - name: Run Build
         run: |
-          npm run build
+          npm run start
   test-web-app:
     runs-on: ubuntu-latest
     needs: build-web-app
