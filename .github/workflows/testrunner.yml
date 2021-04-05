@@ -9,26 +9,48 @@ on:
 env:
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-  SAUCECTL_VERSION: 0.34.1
+  SAUCECTL_VERSION: "0.34.1"
 
 jobs:
-  cypress-job:
-    runs-on: ubuntu-latest # which OS
+  build-web-app:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+    - name: Install Dependencies
+      run: |
+        npm install
+    - name: Run Build
+      run: |
+        npm run build
+  test-web-app:
+    runs-on: ubuntu-latest
+    needs: build-web-app
     steps:
-      - name: Checkout Github Code # taking all code where this file exists
-        uses: actions/checkout@v2 # pulling from code here: https://github.com/actions/checkout
-      - name: Download saucectl
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Checkout Github App Code
+        uses: actions/checkout@v2
+      - name: Install Dependencies
         run: |
-          SAUCECTL_BINARY=saucectl_${SAUCECTL_VERSION}_linux_64-bit.tar.gz
-          curl -L -o ${SAUCECTL_BINARY} \
-              -H "Accept: application/octet-stream" \
-              https://github.com/saucelabs/saucectl/releases/download/v${SAUCECTL_VERSION}/${SAUCECTL_BINARY} \
-              && tar -xvzf ${SAUCECTL_BINARY}
-      - name: Workaround for container permissions
-        run: sudo chmod -R 777 cypress/ #updated
-      - name: Run Saucy Tests
+          npm install
+      - name: Run Build
         run: |
-          ./saucectl run
-        env:
-          BUILD_ID: ${{ github.run_id }}
-          BUILD_ENV: GitHub Actions
+          npm run build
+      - name: Download & Use Sauce Connect Tunnel
+        run: |
+          set -e
+          curl -L -s https://saucelabs.com/downloads/sc-4.6.4-linux.tar.gz | sudo tar -xvz
+          sc-4.6.4-linux/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY -i proxy-tunnel-$GITHUB_RUN_ID &
+      - name: Install saucectl
+        run: |
+          curl -L -s https://github.com/saucelabs/saucectl/releases/download/v${SAUCECTL_VERSION}/saucectl_${SAUCECTL_VERSION}_linux_64-bit.tar.gz | sudo tar -xvz -C /usr/bin/
+      - name: saucectl run
+        run: |
+          # Expose website
+          cd build/ && python3 -m http.server 8000 &
+          saucectl run -c ./.sauce/config.yml --tunnel-id proxy-tunnel-$GITHUB_RUN_ID --test-env sauce
