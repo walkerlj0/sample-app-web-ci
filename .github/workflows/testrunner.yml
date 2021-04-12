@@ -57,5 +57,5 @@ jobs:
       - name: saucectl run
         run: |
           # Expose website
-          cd build/ && python3 -m http.server 8000 &
+          cd build/ && python3 -m http.server 8080 &
           saucectl run -c ./.sauce/config.yml --tunnel-id proxy-tunnel-$GITHUB_RUN_ID --test-env sauce
